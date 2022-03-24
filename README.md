@@ -1,4 +1,4 @@
-# Challenge Front: JO 2020
+# Challenge Front: Jeux Olympique
 
 L'objectif de ce challenge est de reproduire la page suivante avec les élèments de la bibliotèque [Ant Design](https://ant.design/components/overview/).
 
