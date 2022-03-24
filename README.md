@@ -38,7 +38,7 @@ Ici l'objectif est afficher un tableau qui affiche le nombre de médailles gagn�
 Concernant le partage du résultat, il est préférable de travailler sur un fork de ce repo :
 ![](https://github-images.s3.amazonaws.com/help/bootcamp/Bootcamp-Fork.png)
 
-Puis de m'envoyer son lien sur tristan@monqualiticien.com.
+Puis de m'envoyer son lien sur tristan@qualineo.io.
 
 Tu as une semaine pour réaliser cette page.
 
