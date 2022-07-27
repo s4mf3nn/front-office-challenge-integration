@@ -3,6 +3,7 @@ import Header from './components/header';
 import SearchBar from './components/searchBar'
 import NextEvents from './components/nextEvents'
 import { Layout } from 'antd';
+import MedalsTable from './components/medalsTable';
 
 function App() {
   const [selectSportIds, setSelectedSportIds] = useState<any>([])
@@ -14,6 +15,7 @@ function App() {
       <Header />
       <SearchBar handleChange={handleChange}  />
       <NextEvents selectSportIds={selectSportIds} />
+      <MedalsTable selectSportIds={selectSportIds} />
     </Layout>
   )
 }

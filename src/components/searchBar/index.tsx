@@ -1,6 +1,7 @@
 import { nextEvent as sportCategories } from '../../data.json'
 import { TSportCategory } from '../../shared/types/sportCategory.type'
 import { Col, Row, Select } from 'antd';
+import './style.css'
 
 const { Option } = Select
 
@@ -13,7 +14,7 @@ export default function SearchBar({ handleChange }: any) {
   )
 
   return (
-    <Row justify="center">
+    <Row justify="center" className="spacer">
       <Col span={20}>
         <Select
           mode="multiple"

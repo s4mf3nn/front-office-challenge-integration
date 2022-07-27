@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { nextEvent as sportCategories } from '../../data.json'
 import { TSportCategory } from '../../shared/types/sportCategory.type'
-import { Col, Empty, Row, Space, Typography } from 'antd';
+import { Col, Divider, Empty, Row, Space, Typography } from 'antd';
 import SportCard from '../sportCard'
 import PaginationButton from '../paginationButton'
 import './style.css'
@@ -42,17 +42,15 @@ export default function NextEvents({ selectSportIds }: any) {
 
   return (
     <Space direction="vertical" size="large">
-      <Row justify="center">
+      <Row justify="center" className="spacer">
         <Col span={20}>
-          <Title level={3}>Prochaines épreuves</Title>
+          <Title level={4}>Prochaines épreuves</Title>
         </Col>
       </Row>
       <Row gutter={16} justify="center" align="middle">
         {displayedCategories && displayedCategories.length === 0
           ? (
-            <>
-              <Empty description="Aucune épreuve de prévu" />
-            </>
+            <Empty description="Aucune épreuve de prévu" />
           ) : (
             <>
               <Col span={3} style={style}>
@@ -79,6 +77,11 @@ export default function NextEvents({ selectSportIds }: any) {
             </>
           )
         }
+      </Row>
+      <Row justify="center">
+        <Col span={20}>
+          <Divider/>
+        </Col>
       </Row>
     </Space>
   )
