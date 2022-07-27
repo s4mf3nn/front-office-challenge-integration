@@ -1,0 +1,4 @@
+.ant-card-cover > * {
+  height: 139px;
+  object-fit: cover;
+}

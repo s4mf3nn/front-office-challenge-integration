@@ -1,0 +1,11 @@
+.ant-page-header {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  font-weight: 700;
+}
+
+.ant-page-header-heading-left > span {
+  margin: 0 auto;
+  font-size: 26px;
+}
