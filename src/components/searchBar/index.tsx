@@ -1,13 +1,14 @@
 import { nextEvent as sportCategories } from '../../data.json'
-import { TSportCategory } from '../../shared/types/sportCategory.type'
+import { ISearchBarProps } from '../../shared/interfaces/searchBarProps.interface'
+import { TSportCategoryDateString } from '../../shared/types/sportCategory.type'
 import { Col, Row, Select } from 'antd';
 import './style.css'
 
 const { Option } = Select
 
-export default function SearchBar({ handleChange }: any) {
+const SearchBar = ({ handleChange }: ISearchBarProps) => {
   // 001: Create options from sportCategories data
-  const options = sportCategories.map((sport: TSportCategory) =>
+  const options = sportCategories.map((sport: TSportCategoryDateString) =>
     <Option key={sport.sportId} value={sport.sportId}>
       {sport.sportTitle}
     </Option>
@@ -30,4 +31,6 @@ export default function SearchBar({ handleChange }: any) {
       </Col>
     </Row>
   )
-};
+}
+
+export default SearchBar

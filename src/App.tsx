@@ -1,21 +1,22 @@
 import { useState } from 'react'
-import Header from './components/header';
+import { Layout } from 'antd'
+import Header from './components/header'
 import SearchBar from './components/searchBar'
 import NextEvents from './components/nextEvents'
-import { Layout } from 'antd';
-import MedalsTable from './components/medalsTable';
+import MedalsTable from './components/medalsTable'
 
 function App() {
-  const [selectSportIds, setSelectedSportIds] = useState<any>([])
+  const [selectedSportIds, setSelectedSportIds] = useState<any>([])
 
-  // 001: Handle selected sportId
+  // 001: Handle selected sportIds
   const handleChange = (value: string) => setSelectedSportIds(value)
+
   return (
     <Layout style={{ overflowX: 'hidden', height: '100vh' }}>
       <Header />
       <SearchBar handleChange={handleChange}  />
-      <NextEvents selectSportIds={selectSportIds} />
-      <MedalsTable selectSportIds={selectSportIds} />
+      <NextEvents selectedSportIds={selectedSportIds} />
+      <MedalsTable/>
     </Layout>
   )
 }

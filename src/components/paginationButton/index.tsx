@@ -1,9 +1,8 @@
-import { FC } from 'react'
-import { Button } from 'antd';
+import { IPaginationButtonProps } from '../../shared/interfaces/paginationButtonProps.interface'
 import { LeftOutlined, RightOutlined } from '@ant-design/icons'
-import { IPaginationButton } from '../../shared/interfaces/paginationButton.interface'
+import { Button } from 'antd'
 
-const PaginationButton: FC<IPaginationButton> = ({ type, handleClick, isDisabled }) => {
+const PaginationButton = ({ type, handleClick, isDisabled }: IPaginationButtonProps) => {
   if (type === "previous") {
     return (
       <Button

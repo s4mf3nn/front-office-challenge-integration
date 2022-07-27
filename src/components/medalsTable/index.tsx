@@ -1,12 +1,13 @@
 import { medals } from '../../data.json'
-import { Col, Row, Space, Table, Typography } from 'antd'
-import { SortOrder } from 'antd/lib/table/interface'
+import { TTableColumns } from '../../shared/types/tableColumns.type'
+import { ColumnsType, SortOrder } from 'antd/lib/table/interface'
+import View from './view'
 import './style.css'
 
-const { Title } = Typography
 
-const MedalsTable = ({ selectSportIds }: any) => {
-  const columns = [
+const MedalsTable = () => {
+  // 001: Create table colums
+  const columns: ColumnsType<TTableColumns[]> = [
   {
     dataIndex: 'country',
     key: 'country',
@@ -39,6 +40,7 @@ const MedalsTable = ({ selectSportIds }: any) => {
   },
   ]
 
+  // 002: Create data source & add up all the medals of each country
   const dataSource = medals.map(country => {
     return {
       key: country.key,
@@ -50,19 +52,8 @@ const MedalsTable = ({ selectSportIds }: any) => {
     }
   })
 
-  return (
-    <Row justify="center" className="spacer">
-      <Col span={20}>
-        <Title level={4}>Médailles</Title>
-        <Table
-          className="table-spacer"
-          dataSource={dataSource}
-          columns={columns}
-          pagination={false}
-          />
-      </Col>
-    </Row>
-  )
+  const params = { dataSource, columns }
+  return <View {...params} />
 }
 
 export default MedalsTable

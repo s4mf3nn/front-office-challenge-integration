@@ -1,33 +1,28 @@
-import { useEffect, useState } from 'react'
 import { nextEvent as sportCategories } from '../../data.json'
-import { TSportCategory } from '../../shared/types/sportCategory.type'
-import { Col, Divider, Empty, Row, Space, Typography } from 'antd';
-import SportCard from '../sportCard'
-import PaginationButton from '../paginationButton'
+import { INextEventsProps } from '../../shared/interfaces/nextEventProps.interface'
+import { TSportCategoryDateNumber } from '../../shared/types/sportCategory.type'
+import { useEffect, useState } from 'react'
+import View from './view'
 import './style.css'
 
-const { Title } = Typography
-
-const style = {
-  display: 'flex',
-  justifyContent: 'center',
-}
-export default function NextEvents({ selectSportIds }: any) {
+const NextEvents = ({ selectedSportIds }: INextEventsProps) => {
   const maxCardPerPage: number = 3
   const [maxPage, setMaxPage] = useState(0)
   const [currentPage, setCurrentPage] = useState(1)
-  const [displayedCategories, setDisplayedCategories] = useState<TSportCategory[]>();
+  const [displayedCategories, setDisplayedCategories] = useState<TSportCategoryDateNumber[]>();
 
   // 001: Retrieve user's selected categories
-  const selectedSportCategories = sportCategories.filter((category: TSportCategory) => {
-    return selectSportIds.includes(category.sportId)
+  const selectedSportCategories: any = sportCategories.filter((category: any) => {
+    return selectedSportIds.includes(category.sportId)
   })
 
   // 002: Display selected categories
   useEffect(() => {
     setMaxPage(Math.ceil(selectedSportCategories.length / 3))
     setDisplayedCategories(paginate(selectedSportCategories, maxCardPerPage, currentPage))
-  }, [selectSportIds])
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedSportIds])
 
   //003:  Handled when user press previous or next button
   const handleClick = (type: 'previous' | 'next') => {
@@ -40,54 +35,13 @@ export default function NextEvents({ selectSportIds }: any) {
     setDisplayedCategories(paginate(selectedSportCategories, maxCardPerPage, newCurrentPage))
   }
 
-  return (
-    <Space direction="vertical" size="large">
-      <Row justify="center" className="spacer">
-        <Col span={20}>
-          <Title level={4}>Prochaines épreuves</Title>
-        </Col>
-      </Row>
-      <Row gutter={16} justify="center" align="middle">
-        {displayedCategories && displayedCategories.length === 0
-          ? (
-            <Empty description="Aucune épreuve de prévu" />
-          ) : (
-            <>
-              <Col span={3} style={style}>
-                <PaginationButton
-                  type="previous"
-                  handleClick={() => handleClick('previous')}
-                  isDisabled={currentPage <= 1}
-                  />
-              </Col>
-              <Space size="small">
-                {displayedCategories && displayedCategories.map(sportCategory =>
-                  <Col span={14} key={sportCategory.id}>
-                    <SportCard sportCategory={sportCategory} />
-                  </Col>
-                )}
-              </Space>
-              <Col span={3} style={style}>
-                <PaginationButton
-                  type="next"
-                  handleClick={() => handleClick('next')}
-                  isDisabled={maxPage <= 1 || currentPage === maxPage}
-                  />
-              </Col>
-            </>
-          )
-        }
-      </Row>
-      <Row justify="center">
-        <Col span={20}>
-          <Divider/>
-        </Col>
-      </Row>
-    </Space>
-  )
+  const params = { displayedCategories, handleClick, currentPage, maxPage }
+  return <View {...params} />
 }
 
-// 003: Handle pagination
-const paginate = (array: TSportCategory[], pageSize: number, currentPage: number) => {
+export default NextEvents
+
+// 004: Handle pagination
+const paginate = (array: TSportCategoryDateNumber[], pageSize: number, currentPage: number) => {
   return array.slice((currentPage - 1) * pageSize, currentPage  * pageSize);
 }

@@ -1,11 +1,11 @@
-import { FC } from 'react'
-import moment from 'moment'
+import { ISportCardProps } from '../../shared/interfaces/sportCardProps.interface'
 import Card from 'antd/lib/card'
+import moment from 'moment'
 import './style.css'
 
 const { Meta } = Card
 
-const SportCard: FC<any> = ({ sportCategory }) => {
+const SportCard= ({ sportCategory }: ISportCardProps) => {
   return (
     <Card
       hoverable
@@ -18,6 +18,6 @@ const SportCard: FC<any> = ({ sportCategory }) => {
       />
     </Card>
   )
-};
+}
 
 export default SportCard
