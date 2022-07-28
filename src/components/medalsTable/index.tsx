@@ -1,7 +1,7 @@
+import View from './view'
+import { ColumnsType, SortOrder } from 'antd/lib/table/interface'
 import { medals } from '../../data.json'
 import { TTableColumns } from '../../shared/types/tableColumns.type'
-import { ColumnsType, SortOrder } from 'antd/lib/table/interface'
-import View from './view'
 import './style.css'
 
 
@@ -17,25 +17,25 @@ const MedalsTable = () => {
     dataIndex: 'gold',
     key: 'gold',
     title: 'Or',
-    sorter: (a: any, b: any) => a.gold - b.gold,
+    sorter: (rowA: any, rowB: any) => rowA.gold - rowB.gold,
   },
   {
     dataIndex: 'silver',
     key: 'silver',
     title: 'Argent',
-    sorter: (a: any, b: any) => a.silver - b.silver,
+    sorter: (rowA: any, rowB: any) => rowA.silver - rowB.silver,
   },
   {
     dataIndex: 'bronze',
     key: 'bronze',
     title: 'Bronze',
-    sorter: (a: any, b: any) => a.bronze - b.bronze,
+    sorter: (rowA: any, rowB: any) => rowA.bronze - rowB.bronze,
   },
   {
     dataIndex: 'total',
     key: 'total',
     title: 'Total',
-    sorter: (a: any, b: any) => a.total - b.total,
+    sorter: (rowA: any, rowB: any) => rowA.total - rowB.total,
     defaultSortOrder: 'descend' as SortOrder,
   },
   ]

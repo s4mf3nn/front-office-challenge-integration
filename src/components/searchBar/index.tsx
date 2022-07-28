@@ -1,7 +1,7 @@
-import { nextEvent as sportCategories } from '../../data.json'
+import { Col, Row, Select } from 'antd'
 import { ISearchBarProps } from '../../shared/interfaces/searchBarProps.interface'
+import { nextEvent as sportCategories } from '../../data.json'
 import { TSportCategoryDateString } from '../../shared/types/sportCategory.type'
-import { Col, Row, Select } from 'antd';
 import './style.css'
 
 const { Option } = Select
@@ -20,9 +20,7 @@ const SearchBar = ({ handleChange }: ISearchBarProps) => {
         <Select
           mode="multiple"
           allowClear
-          style={{
-            width: '100%',
-          }}
+          style={{ width: '100%' }}
           placeholder="Please select one or more sport category"
           onChange={handleChange}
         >

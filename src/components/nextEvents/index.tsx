@@ -1,8 +1,8 @@
-import { nextEvent as sportCategories } from '../../data.json'
+import View from './view'
 import { INextEventsProps } from '../../shared/interfaces/nextEventProps.interface'
+import { nextEvent as sportCategories } from '../../data.json'
 import { TSportCategoryDateNumber } from '../../shared/types/sportCategory.type'
 import { useEffect, useState } from 'react'
-import View from './view'
 import './style.css'
 
 const NextEvents = ({ selectedSportIds }: INextEventsProps) => {
@@ -20,6 +20,11 @@ const NextEvents = ({ selectedSportIds }: INextEventsProps) => {
   useEffect(() => {
     setMaxPage(Math.ceil(selectedSportCategories.length / 3))
     setDisplayedCategories(paginate(selectedSportCategories, maxCardPerPage, currentPage))
+
+    if (currentPage === 2 && selectedSportCategories.length <= 3 ) {
+      setCurrentPage(1)
+      setDisplayedCategories(paginate(selectedSportCategories, maxCardPerPage, 1))
+    }
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedSportIds])
@@ -43,5 +48,5 @@ export default NextEvents
 
 // 004: Handle pagination
 const paginate = (array: TSportCategoryDateNumber[], pageSize: number, currentPage: number) => {
-  return array.slice((currentPage - 1) * pageSize, currentPage  * pageSize);
+  return array.slice((currentPage - 1) * pageSize, currentPage * pageSize)
 }
